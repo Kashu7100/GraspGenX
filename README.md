@@ -1,3 +1,13 @@
+> **⚠️ Inference-slim fork.** This fork of [NVlabs/GraspGenX](https://github.com/NVlabs/GraspGenX)
+> is trimmed to the **inference** path only to minimize installation overhead (e.g. for
+> embedding in downstream projects like Eden). The training, data-generation, ZMQ serving,
+> and end-to-end pick-and-place (`end2end/`, cuRobo/Newton/MuJoCo) code and their heavy
+> dependencies (webdataset, tensorboard, pyrender, scene-synthesizer, hydra, transformers,
+> torch-geometric, …) have been removed, and all version pins relaxed to floors so it
+> co-installs with modern torch/numpy/diffusers. The Python inference API
+> (`GraspGenXSampler`, `run_planner_on_object`) is unchanged. For training or the full
+> pipeline, use upstream. See `git log` / the `inference-slim` PR for the exact changes.
+
 <!-- <img src="fig/cover.png" width="1000" height="250" title="readme1">  -->
 
 <div align="center">

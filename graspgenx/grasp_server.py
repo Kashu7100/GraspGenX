@@ -9,7 +9,7 @@ import numpy as np
 import omegaconf
 import torch
 
-from graspgenx.dataset.dataset import collate
+from graspgenx.data_lite import collate
 from graspgenx.models.grasp_gen import GraspGen
 from graspgenx.utils.point_cloud import knn_points, point_cloud_outlier_removal
 from graspgenx.x_grippers import resolve_gripper_info

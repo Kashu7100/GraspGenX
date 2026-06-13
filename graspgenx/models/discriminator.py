@@ -10,7 +10,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from collections import OrderedDict
-from graspgenx.dataset.dataset import MAPPING_ID2NAME
+from graspgenx.data_lite import MAPPING_ID2NAME
 from graspgenx.utils.transformations import matrix_to_rt
 from graspgenx.models.model_utils import (
     PointNetPlusPlus,

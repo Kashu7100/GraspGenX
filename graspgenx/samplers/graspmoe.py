@@ -17,7 +17,7 @@ import numpy as np
 import torch
 from scipy.spatial import ConvexHull, cKDTree
 
-from graspgenx.dataset.dataset import collate
+from graspgenx.data_lite import collate
 from graspgenx.grasp_server import GraspGenXSampler
 from graspgenx.utils.point_cloud import point_cloud_outlier_removal
 from graspgenx.utils.logging_config import get_logger

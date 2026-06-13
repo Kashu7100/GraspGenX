@@ -44,7 +44,7 @@ from omegaconf import DictConfig
 from pathlib import Path
 
 from graspgenx.models.grasp_gen import GraspGen
-from graspgenx.dataset.dataset import collate
+from graspgenx.data_lite import collate
 
 
 # ─── Helpers ─────────────────────────────────────────────────────────────────
