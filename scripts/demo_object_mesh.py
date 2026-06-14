@@ -22,7 +22,7 @@ from graspgenx.utils.viser_utils import (
     visualize_mesh,
     visualize_pointcloud,
 )
-from graspgenx.dataset.dataset_utils import sample_points
+from graspgenx.data_lite import sample_points
 from graspgenx.dataset.eval_utils import save_to_isaac_grasp_format
 from demo_object_pc import _resolve_default_checkpoints, load_model_cfg
 

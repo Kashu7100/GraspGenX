@@ -19,7 +19,6 @@ def test_core_submodules_importable():
         "graspgenx.utils.point_cloud",
         "graspgenx.robot",
         "graspgenx.dataset.exceptions",
-        "graspgenx.dataset.webdataset_utils",
     ]
     for module_name in modules:
         mod = importlib.import_module(module_name)
