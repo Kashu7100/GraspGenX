@@ -217,6 +217,9 @@ def visualize_grasps_for_object(
 
 def main():
     args = parse_args()
+    from graspgenx.utils.logging_config import setup_logging
+
+    setup_logging()  # opt-in console logging for standalone runs
 
     if not os.path.exists(args.sample_data_dir):
         raise FileNotFoundError(
