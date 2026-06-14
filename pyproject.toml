@@ -64,9 +64,6 @@ dependencies = [
 # Interactive grasp/point-cloud visualization (graspgenx.utils.viser_utils, demo
 # scripts). NOT needed for headless inference via the Python API.
 vis = ["viser"]
-# Mesh-vs-scene collision filtering at higher fidelity (graspgenx.utils.collision_filter
-# works without it; python-fcl enables exact mesh checks).
-collision = ["python-fcl"]
 dev = ["black", "isort", "flake8", "pytest"]
 
 [tool.setuptools]
