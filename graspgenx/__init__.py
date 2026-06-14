@@ -10,6 +10,9 @@ try:
 except ImportError:
     pass
 
+# Re-export the asset resolvers. Assets (gripper descriptions + checkpoints) are
+# downloaded lazily on first use from the Hugging Face cache — NOT at import time —
+# so importing graspgenx neither does network I/O nor writes into site-packages.
 try:
     from graspgenx._setup_dependencies import (
         ensure_checkpoints,
@@ -19,14 +22,11 @@ try:
         get_gripper_descriptions_assets,
         get_gripper_descriptions_root,
     )
-
-    ensure_gripper_descriptions()
-    ensure_checkpoints()
-except Exception:  # noqa: BLE001 - never let setup hook break imports
+except Exception:  # noqa: BLE001 - never let the import break the package
     import logging
 
     logging.getLogger(__name__).debug(
-        "graspgenx dependency setup hook failed; continuing.", exc_info=True
+        "graspgenx asset resolvers unavailable; continuing.", exc_info=True
     )
 
 __version__ = "0.1.0"
