@@ -331,6 +331,9 @@ def wait_for_next(vis, label=""):
 
 if __name__ == "__main__":
     args = parse_args()
+    from graspgenx.utils.logging_config import setup_logging
+
+    setup_logging()  # opt-in console logging for standalone runs
 
     if args.return_topk and args.topk_num_grasps == -1:
         args.topk_num_grasps = 100

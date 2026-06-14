@@ -1,10 +1,12 @@
 # SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 # SPDX-License-Identifier: Apache-2.0
 
+# Library logging: importing logging_config attaches a NullHandler to the
+# "graspgenx" logger so importing this package never configures the root logger
+# or prints (which previously duplicated/clobbered host Genesis/Eden output).
+# Call graspgenx.utils.logging_config.setup_logging() for opt-in console output.
 try:
-    from graspgenx.utils.logging_config import setup_logging
-
-    setup_logging()
+    import graspgenx.utils.logging_config  # noqa: F401
 except ImportError:
     pass
 
