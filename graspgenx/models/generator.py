@@ -8,7 +8,7 @@ import time
 import numpy as np
 import torch
 import torch.nn as nn
-from diffusers.schedulers.scheduling_ddpm import DDPMScheduler
+from graspgenx.models.ddpm_scheduler import DDPMScheduler
 from scipy.spatial import KDTree
 from collections import OrderedDict
 

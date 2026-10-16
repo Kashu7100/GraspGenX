@@ -4,9 +4,13 @@
 > and end-to-end pick-and-place (`end2end/`, cuRobo/Newton/MuJoCo) code and their heavy
 > dependencies (webdataset, tensorboard, pyrender, scene-synthesizer, hydra, transformers,
 > torch-geometric, …) have been removed, and all version pins relaxed to floors so it
-> co-installs with modern torch/numpy/diffusers. The Python inference API
-> (`GraspGenXSampler`, `run_planner_on_object`) is unchanged. For training or the full
-> pipeline, use upstream. See `git log` / the `inference-slim` PR for the exact changes.
+> co-installs with modern torch/numpy. diffusers is no longer a dependency (its
+> `DDPMScheduler` is vendored, so it no longer caps `huggingface-hub` below 2). The Python
+> inference API (`GraspGenXSampler`, `run_planner_on_object`) is unchanged. For training or
+> the full pipeline, use upstream. See `git log` / the `inference-slim` PR for the exact changes.
+>
+> It is published on PyPI as **`eden-graspgenx`** (the import name stays `graspgenx`):
+> `pip install eden-graspgenx`, or `pip install "eden[graspgenx]"` with Eden.
 
 <!-- <img src="fig/cover.png" width="1000" height="250" title="readme1">  -->
 
