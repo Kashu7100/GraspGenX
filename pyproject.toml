@@ -1,18 +1,19 @@
 [build-system]
-requires = ["setuptools>=61", "wheel"]
+requires = ["setuptools>=77", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "graspgenx"
-version = "1.0.0"
-description = "GraspGenX: Cross-Embodiment Diffusion-based 6-DOF Grasp Generation"
+name = "eden-graspgenx"
+version = "0.1.0"
+description = "GraspGenX (cross-embodiment diffusion-based 6-DOF grasp generation), inference-only, packaged for Eden"
 authors = [
     {name = "Adithya Murali", email = "admurali@nvidia.com"},
 ]
 maintainers = [
-    {name = "Adithya Murali", email = "admurali@nvidia.com"},
+    {name = "Kashu Yamazaki", email = "kyamazak@andrew.cmu.edu"},
 ]
-license = {text = "NVIDIA Corporation"}
+license = "Apache-2.0"
+license-files = ["LICENSE"]
 readme = "README.md"
 requires-python = ">=3.10"
 keywords = ["robotics", "manipulation", "learning", "computer-vision", "grasping", "cross-embodiment"]
@@ -28,10 +29,13 @@ classifiers = [
 # end-to-end pipelines (and their heavy deps: webdataset, tensorboard, pyrender,
 # scene-synthesizer, hydra, transformers, torch-geometric, ...) have been removed
 # from this fork — see the slim/inference history. All pins are FLOORS: verified
-# end-to-end on torch 2.1 → 2.12, numpy 1.26 → 2.4, diffusers 0.11 → 0.38, so the
-# package co-installs cleanly with downstream projects instead of forcing
-# conflicting exact versions. The release checkpoint uses the pure-PyTorch
-# PTv3-vanilla backbone, so no PointNet++ CUDA extension build is required.
+# end-to-end on torch 2.1 → 2.14, numpy 1.26 → 2.4, so the package co-installs
+# cleanly with downstream projects instead of forcing conflicting exact versions.
+# The release checkpoint uses the pure-PyTorch PTv3-vanilla backbone, so no
+# PointNet++ CUDA extension build is required. diffusers is not a dependency:
+# its DDPMScheduler is vendored (graspgenx/models/ddpm_scheduler.py, checked
+# against diffusers in tests/test_ddpm_scheduler.py) because every diffusers
+# release caps huggingface-hub below 2.
 dependencies = [
     # Core ML
     "torch>=2.1",
@@ -39,7 +43,6 @@ dependencies = [
     "numpy>=1.24",
     "scipy",
     "scikit-learn",
-    "diffusers>=0.11",
     "timm>=1.0",
     "tensordict",
     "addict",
@@ -57,6 +60,7 @@ dependencies = [
 [project.urls]
 "Homepage" = "https://graspgenx.github.io"
 "Repository" = "https://github.com/Kashu7100/GraspGenX"
+"Eden" = "https://github.com/Kashu7100/Eden"
 "Upstream" = "https://github.com/NVlabs/GraspGenX"
 "Documentation" = "https://graspgenx.github.io"
 
@@ -64,7 +68,7 @@ dependencies = [
 # Interactive grasp/point-cloud visualization (graspgenx.utils.viser_utils, demo
 # scripts). NOT needed for headless inference via the Python API.
 vis = ["viser"]
-dev = ["black", "isort", "flake8", "pytest"]
+dev = ["black", "isort", "flake8", "pytest", "diffusers"]  # diffusers: the scheduler parity test
 
 [tool.setuptools]
 include-package-data = true
